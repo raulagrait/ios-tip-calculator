@@ -12,10 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    /// Workaround for "Class variables not yet supported."
+    struct Static {
+        static var instance: AppDelegate!
+    }
+        
+    /// Singleton instance of the AppDelegate
+    class var sharedInstance: AppDelegate {
+        return Static.instance
+    }
 
+    var tipManager: TipManager!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        Static.instance = self
+        tipManager = TipManager()        
         return true
     }
 

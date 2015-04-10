@@ -89,7 +89,13 @@
                             <outletCollection property="gestureRecognizers" destination="ok9-gW-GYU" appends="YES" id="G1a-ub-Ef3"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Tip Calculator" id="rUg-Os-jIs"/>
+                    <navigationItem key="navigationItem" title="Tip Calculator" id="rUg-Os-jIs">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Ido-QM-4yV">
+                            <connections>
+                                <segue destination="8M7-6n-d6t" kind="show" id="V3U-aF-PQM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="billTextField" destination="Y9m-V2-Mka" id="9xn-bq-LHq"/>
                         <outlet property="tipLabel" destination="b1B-Xh-dcq" id="z4Z-b4-NRw"/>
@@ -105,6 +111,102 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="399"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="XHE-ua-cSp">
+            <objects>
+                <viewController title="Settings" id="8M7-6n-d6t" customClass="SettingsViewController" customModule="TipCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pg6-ZM-dqg"/>
+                        <viewControllerLayoutGuide type="bottom" id="3RJ-MX-nEa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eIU-f1-ovM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Small Tip %" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNf-Hp-etq">
+                                <rect key="frame" x="35" y="100" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Medium Tip %" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2g-4v-0hl">
+                                <rect key="frame" x="16" y="155" width="113" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bJy-JV-f5x">
+                                <rect key="frame" x="142" y="96" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onSmallTipChanged:" destination="8M7-6n-d6t" eventType="editingChanged" id="jbO-kf-Mo5"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w6S-84-eYy">
+                                <rect key="frame" x="142" y="151" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onMediumTipChanged:" destination="8M7-6n-d6t" eventType="editingChanged" id="MqS-r5-uSC"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2uO-XO-Mgu">
+                                <rect key="frame" x="142" y="206" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onLargeTipChanged:" destination="8M7-6n-d6t" eventType="editingChanged" id="gaW-85-0gF"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Large Tip %" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33T-Zt-rIV">
+                                <rect key="frame" x="35" y="209" width="94" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="largeTipTextField" destination="2uO-XO-Mgu" id="YMl-o1-fse"/>
+                        <outlet property="mediumTipTextField" destination="w6S-84-eYy" id="S6f-dU-58J"/>
+                        <outlet property="smallTipTextField" destination="bJy-JV-f5x" id="uMU-zl-5E6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iTR-eN-6U8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1795" y="415"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="J1l-cg-Kpg">
+            <objects>
+                <viewController id="1Yb-yW-rz6" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dqm-AY-GPp"/>
+                        <viewControllerLayoutGuide type="bottom" id="qfC-x7-YvW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VHW-ee-fvV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dp2-pH-tbz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FOw-D3-fRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2654" y="415"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="FqX-nB-YUy">
+            <objects>
+                <tableViewController id="eOC-vZ-QHV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Settings" id="hWp-rJ-Dmu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VUE-ys-nSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3290" y="404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fhg-dc-887">
