@@ -18,16 +18,26 @@ class SettingsViewController : UIViewController {
     lazy var tipManager: TipManager = AppDelegate.sharedInstance.tipManager
     
     override func viewDidLoad() {
+        smallTipTextField.text = String(format: "%d", tipManager.smallTipInteger)
+        mediumTipTextField.text = String(format: "%d", tipManager.mediumTipInteger)
+        largeTipTextField.text = String(format: "%d", tipManager.largeTipInteger)
+        
     }
     
     @IBAction func onSmallTipChanged(sender: AnyObject) {
+        var smallTip: Int = (smallTipTextField.text as NSString).integerValue
+        tipManager.smallTipInteger = smallTip
     }
     
     
     @IBAction func onMediumTipChanged(sender: AnyObject) {
+        var mediumTip: Double = (mediumTipTextField.text as NSString).doubleValue / 100
+        tipManager.mediumTipPercentage = mediumTip
     }
     
     
     @IBAction func onLargeTipChanged(sender: AnyObject) {
+        var largeTip: Double = (largeTipTextField.text as NSString).doubleValue / 100
+        tipManager.largeTipPercentage = largeTip
     }
 }

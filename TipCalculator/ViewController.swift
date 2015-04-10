@@ -24,6 +24,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         updateControls()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        updateControls()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -47,6 +52,15 @@ class ViewController: UIViewController {
         tipManager.billAmount = (billTextField.text as NSString).doubleValue
         tipLabel.text = String(format: "$%.2f", tipManager.tipAmount)
         totalLabel.text = String(format: "$%.2f", tipManager.totalAmount)
+        
+        var smallTitle = "\(tipManager.smallTipInteger)%"
+        tipSegmentedControl.setTitle(smallTitle, forSegmentAtIndex: 0)
+        
+        var mediumTitle = "\(tipManager.mediumTipInteger)%"
+        tipSegmentedControl.setTitle(mediumTitle, forSegmentAtIndex: 1)
+        
+        var largeTitle = "\(tipManager.largeTipInteger)%"
+        tipSegmentedControl.setTitle(largeTitle, forSegmentAtIndex: 2)
     }
 }
 

@@ -39,6 +39,36 @@ class TipManager {
         get { return billAmount + tipAmount }
     }
     
+    var smallTipPercentage: Double {
+        get { return tipPercentages[Tip.SmallTip.rawValue] }
+        set(percentage) { tipPercentages[Tip.SmallTip.rawValue] = percentage }
+    }
+    
+    var mediumTipPercentage: Double {
+        get { return tipPercentages[Tip.MediumTip.rawValue] }
+        set(percentage) { tipPercentages[Tip.MediumTip.rawValue] = percentage }
+    }
+    
+    var largeTipPercentage: Double {
+        get { return tipPercentages[Tip.LargeTip.rawValue] }
+        set(percentage) { tipPercentages[Tip.LargeTip.rawValue] = percentage }
+    }
+    
+    var smallTipInteger: Int {
+        get { return Int(smallTipPercentage * 100) }
+        set(tip) { smallTipPercentage = Double(tip) / 100.0 }
+    }
+    
+    var mediumTipInteger: Int {
+        get { return Int(mediumTipPercentage * 100) }
+        set(tip) { mediumTipPercentage = Double(tip) / 100.0 }
+    }
+    
+    var largeTipInteger: Int {
+        get { return Int(largeTipPercentage * 100) }
+        set(tip) { largeTipPercentage = Double(tip) / 100.0 }
+    }
+    
     func setTipIndex(tipIndex: Int) {
         if (tipIndex >= Tip.SmallTip.rawValue && tipIndex <= Tip.LargeTip.rawValue) {
             currentTip = Tip(rawValue: tipIndex)!
