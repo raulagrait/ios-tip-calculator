@@ -31,7 +31,18 @@ class ViewController: UIViewController {
 
 
     @IBAction func onEditingChanged(sender: AnyObject) {
+        updateControls()
+    }
 
+    @IBAction func onTapGestureRecognized(sender: AnyObject) {
+        view.endEditing(true)
+    }
+
+    @IBAction func onSegmentedControlValueChanged(sender: AnyObject) {
+        updateControls()
+    }
+
+    func updateControls() {
         var tipPercentages = [0.18, 0.20, 0.22]
         var tipPercentage = tipPercentages[tipSegmentedControl.selectedSegmentIndex]
 
@@ -41,10 +52,6 @@ class ViewController: UIViewController {
 
         tipLabel.text = String(format: "$%.2f", tipAmount)
         totalLabel.text = String(format: "$%.2f", totalAmount)
-    }
-
-    @IBAction func onTapGestureRecognized(sender: AnyObject) {
-        view.endEditing(true)
     }
 }
 
