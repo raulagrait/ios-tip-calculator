@@ -16,6 +16,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var totalLabel: UILabel!
 
+    @IBOutlet weak var tipSegmentedControl: UISegmentedControl!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tipLabel.text = "$0.00"
@@ -30,12 +32,19 @@ class ViewController: UIViewController {
 
     @IBAction func onEditingChanged(sender: AnyObject) {
 
+        var tipPercentages = [0.18, 0.20, 0.22]
+        var tipPercentage = tipPercentages[tipSegmentedControl.selectedSegmentIndex]
+
         let billAmount = (billTextField.text as NSString).doubleValue
-        let tipAmount = billAmount * 0.2
+        let tipAmount = billAmount * tipPercentage
         let totalAmount = billAmount + tipAmount
 
         tipLabel.text = String(format: "$%.2f", tipAmount)
         totalLabel.text = String(format: "$%.2f", totalAmount)
+    }
+
+    @IBAction func onTapGestureRecognized(sender: AnyObject) {
+        view.endEditing(true)
     }
 }
 

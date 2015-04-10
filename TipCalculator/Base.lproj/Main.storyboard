@@ -47,10 +47,13 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bng-IG-Wql">
                                 <rect key="frame" x="45" y="454" width="495" height="29"/>
                                 <segments>
-                                    <segment title="15%"/>
+                                    <segment title="18%"/>
                                     <segment title="20%"/>
                                     <segment title="25%"/>
                                 </segments>
+                                <connections>
+                                    <action selector="onEditingChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="SHx-iM-K7p"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y9m-V2-Mka">
                                 <rect key="frame" x="180" y="151" width="370" height="30"/>
@@ -68,6 +71,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Y9m-V2-Mka" firstAttribute="leading" secondItem="Cgl-fq-hfu" secondAttribute="trailing" constant="47" id="0HT-h0-ZWs"/>
                             <constraint firstAttribute="trailing" secondItem="XGy-ne-agd" secondAttribute="trailing" constant="60" id="7Mo-Vt-w6M"/>
@@ -81,15 +85,24 @@
                             <constraint firstItem="365-gb-j0c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="pXL-8k-Tl0"/>
                             <constraint firstAttribute="trailing" secondItem="YRD-JZ-OIf" secondAttribute="trailing" constant="60" id="xw8-7d-z7Y"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ok9-gW-GYU" appends="YES" id="G1a-ub-Ef3"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="rUg-Os-jIs"/>
                     <connections>
                         <outlet property="billTextField" destination="Y9m-V2-Mka" id="9xn-bq-LHq"/>
                         <outlet property="tipLabel" destination="b1B-Xh-dcq" id="z4Z-b4-NRw"/>
+                        <outlet property="tipSegmentedControl" destination="Bng-IG-Wql" id="Jz6-Oy-sXw"/>
                         <outlet property="totalLabel" destination="YRD-JZ-OIf" id="mlg-tH-byD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ok9-gW-GYU">
+                    <connections>
+                        <action selector="onTapGestureRecognized:" destination="vXZ-lx-hvc" id="Zy4-9I-IaU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1117" y="399"/>
         </scene>
