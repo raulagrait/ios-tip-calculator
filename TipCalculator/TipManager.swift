@@ -18,7 +18,11 @@ class TipManager {
     
     var tipPercentages = [Double]()
     var currentTip: Tip
-    var billAmount: Double
+    var billAmount: Double {
+        didSet {
+            saveValues()
+        }
+    }
     
     init() {
         tipPercentages = [0.18, 0.20, 0.22]
@@ -83,13 +87,23 @@ class TipManager {
     
     func loadValues() {
         var defaults = NSUserDefaults.standardUserDefaults()
-        billAmount = defaults.doubleForKey("bill_amount_key")
-        println("loaded billAmount \(billAmount)")
+        
+        if let storedDate = defaults.objectForKey("current_date_key") as? NSDate {
+            var deltaInterval = -1 * storedDate.timeIntervalSinceNow
+            println("\(deltaInterval) seconds elapsed since values saved")
+            if deltaInterval < 10 * 60 {
+                billAmount = defaults.doubleForKey("bill_amount_key")
+                println("loaded billAmount \(billAmount)")
+            }
+        }
     }
     
     func saveValues() {
+        var currentDate = NSDate();
         var defaults = NSUserDefaults.standardUserDefaults()
+        
         defaults.setDouble(billAmount, forKey: "bill_amount_key")
+        defaults.setObject(currentDate, forKey: "current_date_key")
         defaults.synchronize()
     }
 }
