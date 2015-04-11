@@ -18,13 +18,13 @@ class TipManager {
     
     var tipPercentages = [Double]()
     var currentTip: Tip
-    
     var billAmount: Double
     
     init() {
-        billAmount = 0.0
         tipPercentages = [0.18, 0.20, 0.22]
         currentTip = Tip.SmallTip
+        billAmount = 0.0
+        loadValues()
     }
 
     var tipPercentage: Double {
@@ -38,6 +38,8 @@ class TipManager {
     var totalAmount: Double {
         get { return billAmount + tipAmount }
     }
+    
+    /// MARK: Tip Percentages
     
     var smallTipPercentage: Double {
         get { return tipPercentages[Tip.SmallTip.rawValue] }
@@ -69,9 +71,25 @@ class TipManager {
         set(tip) { largeTipPercentage = Double(tip) / 100.0 }
     }
     
+    /// MARK: Tip Index
+    
     func setTipIndex(tipIndex: Int) {
         if (tipIndex >= Tip.SmallTip.rawValue && tipIndex <= Tip.LargeTip.rawValue) {
             currentTip = Tip(rawValue: tipIndex)!
         }
+    }
+    
+    /// MARK: Save and Load
+    
+    func loadValues() {
+        var defaults = NSUserDefaults.standardUserDefaults()
+        billAmount = defaults.doubleForKey("bill_amount_key")
+        println("loaded billAmount \(billAmount)")
+    }
+    
+    func saveValues() {
+        var defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setDouble(billAmount, forKey: "bill_amount_key")
+        defaults.synchronize()
     }
 }

@@ -22,6 +22,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        billTextField.text = String(format: "%.2f", tipManager.billAmount)
         billTextField.becomeFirstResponder()
         updateControls()
     }
