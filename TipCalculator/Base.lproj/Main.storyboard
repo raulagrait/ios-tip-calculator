@@ -23,13 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyg-T2-23H">
-                                <rect key="frame" x="45" y="246" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$100.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1B-Xh-dcq">
-                                <rect key="frame" x="242" y="246" width="298" height="21"/>
+                                <rect key="frame" x="45" y="289" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -41,11 +35,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-ne-agd">
-                                <rect key="frame" x="45" y="320" width="495" height="27"/>
+                                <rect key="frame" x="45" y="327" width="495" height="27"/>
                                 <color key="backgroundColor" red="0.05924479166666663" green="0.05924479166666663" blue="0.05924479166666663" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bng-IG-Wql">
-                                <rect key="frame" x="45" y="454" width="495" height="29"/>
+                                <rect key="frame" x="53" y="210" width="495" height="29"/>
                                 <segments>
                                     <segment title="18%"/>
                                     <segment title="20%"/>
@@ -66,6 +60,12 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="365-gb-j0c">
                                 <rect key="frame" x="45" y="377" width="62" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="$100.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1B-Xh-dcq">
+                                <rect key="frame" x="242" y="289" width="298" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -178,35 +178,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTR-eN-6U8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1795" y="415"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="J1l-cg-Kpg">
-            <objects>
-                <viewController id="1Yb-yW-rz6" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="dqm-AY-GPp"/>
-                        <viewControllerLayoutGuide type="bottom" id="qfC-x7-YvW"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VHW-ee-fvV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Dp2-pH-tbz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FOw-D3-fRg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2654" y="415"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="FqX-nB-YUy">
-            <objects>
-                <tableViewController id="eOC-vZ-QHV" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Settings" id="hWp-rJ-Dmu"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VUE-ys-nSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3290" y="404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Fhg-dc-887">
