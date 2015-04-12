@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func onSegmentedControlValueChanged(sender: AnyObject) {
-        tipManager.setTipIndex(tipSegmentedControl.selectedSegmentIndex)
+        tipManager.tipIndex = tipSegmentedControl.selectedSegmentIndex
         updateControls()
     }
 

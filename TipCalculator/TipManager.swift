@@ -33,7 +33,7 @@ class TipManager {
         tipPercentages = [0.18, 0.20, 0.22]
         currentTip = Tip.SmallTip
         billAmount = 0.0
-        tipIndex = 0
+        tipIndexValue = 0
         loadValues()
     }
 
@@ -83,16 +83,15 @@ class TipManager {
     
     /// MARK: Tip Index
     
-    func setTipIndex(index: Int) {
-        if (index >= Tip.SmallTip.rawValue && index <= Tip.LargeTip.rawValue) {
-            tipIndex = index
-            currentTip = Tip(rawValue: tipIndex)!
-        }
-    }
-    
+    var tipIndexValue: Int
     var tipIndex:Int {
-        didSet {
-            saveTipIndex()
+        get { return tipIndexValue }
+        set(index) {
+            if (index >= Tip.SmallTip.rawValue && index <= Tip.LargeTip.rawValue) {
+                tipIndexValue = index
+                currentTip = Tip(rawValue: tipIndex)!
+                saveTipIndex()
+            }
         }
     }
     
@@ -117,8 +116,7 @@ class TipManager {
         if let storedTipPercentages = defaults.objectForKey(tipPercentagesKey) as? [Double] {
             tipPercentages = storedTipPercentages
         }
-        var index = defaults.integerForKey(tipIndexKey)
-        setTipIndex(index)
+        tipIndex = defaults.integerForKey(tipIndexKey)
     }
 
     func saveBillAmount() {
