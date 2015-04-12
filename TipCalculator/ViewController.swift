@@ -63,6 +63,8 @@ class ViewController: UIViewController {
         
         var largeTitle = "\(tipManager.largeTipInteger)%"
         tipSegmentedControl.setTitle(largeTitle, forSegmentAtIndex: 2)
+        
+        tipSegmentedControl.selectedSegmentIndex = tipManager.tipIndex
     }
 }
 

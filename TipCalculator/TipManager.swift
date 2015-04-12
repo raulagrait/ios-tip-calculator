@@ -33,6 +33,7 @@ class TipManager {
         tipPercentages = [0.18, 0.20, 0.22]
         currentTip = Tip.SmallTip
         billAmount = 0.0
+        tipIndex = 0
         loadValues()
     }
 
@@ -82,9 +83,16 @@ class TipManager {
     
     /// MARK: Tip Index
     
-    func setTipIndex(tipIndex: Int) {
-        if (tipIndex >= Tip.SmallTip.rawValue && tipIndex <= Tip.LargeTip.rawValue) {
+    func setTipIndex(index: Int) {
+        if (index >= Tip.SmallTip.rawValue && index <= Tip.LargeTip.rawValue) {
+            tipIndex = index
             currentTip = Tip(rawValue: tipIndex)!
+        }
+    }
+    
+    var tipIndex:Int {
+        didSet {
+            saveTipIndex()
         }
     }
     
@@ -93,6 +101,7 @@ class TipManager {
     let currentDateKey = "current_date_key"
     let billAmountKey = "bill_amount_key"
     let tipPercentagesKey = "tip_percentages_key"
+    let tipIndexKey = "tip_index_key"
     
     func loadValues() {
         var defaults = NSUserDefaults.standardUserDefaults()
@@ -102,11 +111,14 @@ class TipManager {
             println("\(deltaInterval) seconds elapsed since values saved")
             if deltaInterval < 10 * 60 {
                 billAmount = defaults.doubleForKey(billAmountKey)
-                if let storedTipPercentages = defaults.objectForKey(tipPercentagesKey) as? [Double] {
-                    tipPercentages = storedTipPercentages
-                }
             }
         }
+        
+        if let storedTipPercentages = defaults.objectForKey(tipPercentagesKey) as? [Double] {
+            tipPercentages = storedTipPercentages
+        }
+        var index = defaults.integerForKey(tipIndexKey)
+        setTipIndex(index)
     }
 
     func saveBillAmount() {
@@ -123,7 +135,14 @@ class TipManager {
         var defaults = NSUserDefaults.standardUserDefaults()
         
         defaults.setObject(tipPercentages, forKey: tipPercentagesKey)
-        defaults.setObject(currentDate, forKey: currentDateKey)
+        defaults.synchronize()
+    }
+    
+    func saveTipIndex() {
+        var currentDate = NSDate();
+        var defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setInteger(tipIndex, forKey: tipIndexKey)
         defaults.synchronize()
     }
 }
