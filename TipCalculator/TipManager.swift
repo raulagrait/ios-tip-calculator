@@ -16,11 +16,16 @@ enum Tip: Int {
 
 class TipManager {
     
-    var tipPercentages = [Double]()
+    var tipPercentages = [Double]() {
+        didSet {
+            saveTipPercentages()
+        }
+    }
+    
     var currentTip: Tip
     var billAmount: Double {
         didSet {
-            saveValues()
+            saveBillAmount()
         }
     }
     
@@ -85,25 +90,40 @@ class TipManager {
     
     /// MARK: Save and Load
     
+    let currentDateKey = "current_date_key"
+    let billAmountKey = "bill_amount_key"
+    let tipPercentagesKey = "tip_percentages_key"
+    
     func loadValues() {
         var defaults = NSUserDefaults.standardUserDefaults()
         
-        if let storedDate = defaults.objectForKey("current_date_key") as? NSDate {
+        if let storedDate = defaults.objectForKey(currentDateKey) as? NSDate {
             var deltaInterval = -1 * storedDate.timeIntervalSinceNow
             println("\(deltaInterval) seconds elapsed since values saved")
             if deltaInterval < 10 * 60 {
-                billAmount = defaults.doubleForKey("bill_amount_key")
-                println("loaded billAmount \(billAmount)")
+                billAmount = defaults.doubleForKey(billAmountKey)
+                if let storedTipPercentages = defaults.objectForKey(tipPercentagesKey) as? [Double] {
+                    tipPercentages = storedTipPercentages
+                }
             }
         }
     }
-    
-    func saveValues() {
+
+    func saveBillAmount() {
         var currentDate = NSDate();
         var defaults = NSUserDefaults.standardUserDefaults()
         
-        defaults.setDouble(billAmount, forKey: "bill_amount_key")
-        defaults.setObject(currentDate, forKey: "current_date_key")
+        defaults.setDouble(billAmount, forKey: billAmountKey)
+        defaults.setObject(currentDate, forKey: currentDateKey)
+        defaults.synchronize()
+    }
+    
+    func saveTipPercentages() {
+        var currentDate = NSDate();
+        var defaults = NSUserDefaults.standardUserDefaults()
+        
+        defaults.setObject(tipPercentages, forKey: tipPercentagesKey)
+        defaults.setObject(currentDate, forKey: currentDateKey)
         defaults.synchronize()
     }
 }
