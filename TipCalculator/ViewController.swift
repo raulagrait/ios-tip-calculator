@@ -19,8 +19,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        billTextField.text = String(format: "%.2f", tipManager.billAmount)
+        
+        var billAmount = tipManager.billAmount
+        var text = billAmount > 0 ? String(format: "%.2f", tipManager.billAmount) : String()
+        
+        billTextField.text = text
         billTextField.becomeFirstResponder()
+        
         updateControls()
     }
     
