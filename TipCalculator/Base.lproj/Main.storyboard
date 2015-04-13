@@ -69,6 +69,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mario.png" translatesAutoresizingMaskIntoConstraints="NO" id="XgQ-qF-FRM">
+                                <rect key="frame" x="-29" y="247" width="51" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="HTE-0s-axH"/>
+                                    <constraint firstAttribute="height" constant="43" id="Ls6-41-PxV"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -78,11 +85,13 @@
                             <constraint firstAttribute="trailing" secondItem="b1B-Xh-dcq" secondAttribute="trailing" constant="60" id="7Ui-6q-oVV"/>
                             <constraint firstItem="Cgl-fq-hfu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="9mG-Ug-HZO"/>
                             <constraint firstItem="Bng-IG-Wql" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="AMX-w2-gwf"/>
+                            <constraint firstItem="XgQ-qF-FRM" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="247" id="M2A-GJ-vyI"/>
                             <constraint firstAttribute="trailing" secondItem="Bng-IG-Wql" secondAttribute="trailing" constant="60" id="X5o-Yj-gt5"/>
                             <constraint firstItem="iyg-T2-23H" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="ZHN-jy-1wI"/>
                             <constraint firstAttribute="trailing" secondItem="Y9m-V2-Mka" secondAttribute="trailing" constant="50" id="cvU-m1-5N0"/>
                             <constraint firstItem="XGy-ne-agd" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="hlG-3Z-sZf"/>
                             <constraint firstItem="365-gb-j0c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="45" id="pXL-8k-Tl0"/>
+                            <constraint firstItem="XgQ-qF-FRM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="-29" id="ua4-aA-R4L"/>
                             <constraint firstAttribute="trailing" secondItem="YRD-JZ-OIf" secondAttribute="trailing" constant="60" id="xw8-7d-z7Y"/>
                         </constraints>
                         <connections>
@@ -98,6 +107,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billTextField" destination="Y9m-V2-Mka" id="9xn-bq-LHq"/>
+                        <outlet property="marioHorizontalLeadingConstraint" destination="ua4-aA-R4L" id="yRc-Tz-oQp"/>
+                        <outlet property="marioImageView" destination="XgQ-qF-FRM" id="VXe-Uj-PxW"/>
+                        <outlet property="marioVerticalLeadingConstraint" destination="M2A-GJ-vyI" id="reA-bt-Me2"/>
                         <outlet property="tipLabel" destination="b1B-Xh-dcq" id="z4Z-b4-NRw"/>
                         <outlet property="tipSegmentedControl" destination="Bng-IG-Wql" id="Jz6-Oy-sXw"/>
                         <outlet property="totalLabel" destination="YRD-JZ-OIf" id="mlg-tH-byD"/>
@@ -198,4 +210,7 @@
             <point key="canvasLocation" x="305" y="1060"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mario.png" width="1600" height="1600"/>
+    </resources>
 </document>

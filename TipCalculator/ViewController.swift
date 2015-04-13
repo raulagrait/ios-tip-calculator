@@ -11,11 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var tipLabel: UILabel!
-
     @IBOutlet weak var billTextField: UITextField!
-
     @IBOutlet weak var totalLabel: UILabel!
-
     @IBOutlet weak var tipSegmentedControl: UISegmentedControl!
     
     lazy var tipManager: TipManager = AppDelegate.sharedInstance.tipManager
@@ -48,7 +45,14 @@ class ViewController: UIViewController {
     @IBAction func onSegmentedControlValueChanged(sender: AnyObject) {
         tipManager.tipIndex = tipSegmentedControl.selectedSegmentIndex
         updateControls()
+        animateMarioRight()
     }
+    
+    /// MARK: Animation
+    
+    @IBOutlet weak var marioImageView: UIImageView!
+    @IBOutlet weak var marioHorizontalLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var marioVerticalLeadingConstraint: NSLayoutConstraint!
 
     func updateControls() {
         tipManager.billAmount = (billTextField.text as NSString).doubleValue
@@ -65,6 +69,45 @@ class ViewController: UIViewController {
         tipSegmentedControl.setTitle(largeTitle, forSegmentAtIndex: 2)
         
         tipSegmentedControl.selectedSegmentIndex = tipManager.tipIndex
+    }
+    
+    func animateMarioRight() {
+        var selectedIndex = CGFloat(tipSegmentedControl.selectedSegmentIndex)
+        var segmentX = tipSegmentedControl.frame.minX
+        var segmentWidth = tipSegmentedControl.frame.width / 3.0
+        
+        var marioWidth = marioImageView.frame.width
+        var offset = (segmentWidth - marioWidth) / 2.0
+        var marioX = CGFloat(segmentX + segmentWidth * selectedIndex + offset)
+        
+        marioImageView.alpha = 1.0
+        marioImageView.hidden = false
+        
+        UIView.animateWithDuration(1.0, animations: {
+            self.marioHorizontalLeadingConstraint.constant = marioX
+            self.view.layoutIfNeeded()
+            }, completion: { finished in
+                self.animateMarioUp()
+        })
+    }
+    
+    func animateMarioUp() {
+        var marioY = tipSegmentedControl.frame.maxY
+        var oldMarioY = marioVerticalLeadingConstraint.constant
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.marioVerticalLeadingConstraint.constant = marioY
+            self.view.layoutIfNeeded()
+            }, completion: { finished in
+                self.marioVerticalLeadingConstraint.constant = oldMarioY
+                self.fadeMarioOut()
+        })
+    }
+    
+    func fadeMarioOut() {
+        UIView.animateWithDuration(1.0, animations: {
+            self.marioImageView.alpha = 0.0
+        })
     }
 }
 
